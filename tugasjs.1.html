@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Pegawai</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid;
+            background-color: darkkhaki;
+        }
+        
+        td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid;
+        }
+    </style>
+</head>
+<h1 align="center">
+    Data Pegawai
+</h1>
+
+<body>
+
+    <script>
+        var pegawai = {
+            nama: 'Ridwan',
+            jabatan: 'manager',
+            status: 'menikah'
+        };
+
+
+        var gajiPokok = {
+            manager: 15000000,
+            'asisten manager': 10000000,
+            staff: 5000000
+        };
+
+
+        var tunjanganJabatan = gajiPokok[pegawai.jabatan] * 0.15;
+
+
+        var bpjs = gajiPokok[pegawai.jabatan] * 0.10;
+
+
+        var tunjanganKeluarga = pegawai.status === 'menikah' ? gajiPokok[pegawai.jabatan] * 0.20 : 0;
+
+
+        var totalGaji = gajiPokok[pegawai.jabatan] + tunjanganJabatan + bpjs + tunjanganKeluarga;
+
+        var totalGajiFooter = 0;
+
+        var table = document.createElement('table');
+        var thead = document.createElement('thead');
+        var tbody = document.createElement('tbody');
+        var tfoot = document.createElement('tfoot');
+        var trHead = document.createElement('tr');
+        var trBody = document.createElement('tr');
+        var trFoot = document.createElement('tr');
+
+
+        var columns = ['Nama Pegawai', 'Jabatan', 'Status', 'Gaji Pokok', 'Tunjangan Jabatan', 'BPJS', 'Tunjangan Keluarga', 'Total Gaji'];
+        columns.forEach(function(column) {
+            var th = document.createElement('th');
+            th.textContent = column;
+            trHead.appendChild(th);
+        });
+
+        thead.appendChild(trHead);
+        table.appendChild(thead);
+
+
+        var data = [pegawai.nama, pegawai.jabatan, pegawai.status, gajiPokok[pegawai.jabatan], tunjanganJabatan, bpjs, tunjanganKeluarga, totalGaji];
+        data.forEach(function(item, index) {
+            var td = document.createElement('td');
+            td.textContent = item;
+            trBody.appendChild(td);
+
+            if (index === data.length - 1) {
+                totalGajiFooter += parseInt(item);
+            }
+        });
+        tbody.appendChild(trBody);
+        table.appendChild(tbody);
+
+
+        var thFoot = document.createElement('th');
+        thFoot.textContent = 'Total Gaji';
+        trFoot.appendChild(thFoot);
+
+        var tdFoot = document.createElement('td');
+        tdFoot.setAttribute('colspan', '7');
+        tdFoot.textContent = totalGajiFooter;
+        trFoot.appendChild(tdFoot);
+
+        tfoot.appendChild(trFoot);
+        table.appendChild(tfoot);
+
+
+        document.body.appendChild(table);
+    </script>
+
+</body>
+
+</html>
