@@ -1,0 +1,83 @@
+<table style="padding: 10px; text-align: center; width: 100%;">
+    <thead>
+        <tr style="background-color: gray;">
+            <th style="background-color: gray; ">No</th>
+            <th style="background-color: gray; ">Nama</th>
+            <th style="background-color: gray; ">Nilai</th>
+            <th style="background-color: gray; ">Keterangan</th>
+            <th style="background-color: gray; ">Grade</th>
+            <th style="background-color: gray; ">Predikat</th>
+        </tr>
+    </thead>
+    <tbody>
+        <script>
+            let s1 = {
+                'nama': 'Budi',
+                nilai: 100
+            };
+            let s2 = {
+                'nama': 'Ali',
+                nilai: 45
+            };
+            let s3 = {
+                'nama': 'Santi',
+                nilai: 80
+            };
+            let s4 = {
+                'nama': 'Lia',
+                nilai: 100
+            };
+            let s5 = {
+                'nama': 'Ahmad',
+                nilai: 75
+            };
+
+            let siswa = [s1, s2, s3, s4, s5];
+        </script>
+
+        <script>
+            var no = 1;
+            for (let s of siswa) {
+                let ket = (s.nilai >= 60) ? 'lulus' : 'gagal';
+                let grade = '';
+                let predikat = '';
+
+                if (s.nilai > 85 && s.nilai <= 100) grade = 'A';
+                else if (s.nilai > 75 && s.nilai <= 85) grade = 'B';
+                else if (s.nilai > 60 && s.nilai <= 75) grade = 'C';
+                else if (s.nilai > 30 && s.nilai <= 60) grade = 'D';
+                else if (s.nilai > 0 && s.nilai <= 30) grade = 'E';
+
+                switch (grade) {
+                    case 'A':
+                        predikat = 'Sempurna';
+                        break;
+                    case 'B':
+                        predikat = 'Baik';
+                        break;
+                    case 'C':
+                        predikat = 'Cukup';
+                        break;
+                    case 'D':
+                        predikat = 'Buruk';
+                        break;
+                    default:
+                        predikat = '';
+                        break;
+                }
+
+
+                document.write("<tr style='background-color: " + (no % 2 == 0 ? 'beige' : 'khaki') + "'>");
+                document.write("<td>" + no++ + "</td>");
+                document.write("<td>" + s.nama + "</td>");
+                document.write("<td>" + s.nilai + "</td>");
+                document.write("<td>" + ket + "</td>");
+                document.write("<td>" + grade + "</td>");
+                document.write("<td>" + predikat + "</td>");
+                document.write("</tr>");
+
+            }
+        </script>
+
+    </tbody>
+</table>
