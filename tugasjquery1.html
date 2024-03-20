@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Handler</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h2>Letakan kursor ke masing-masing kotak untuk melihat gambar</h2>
+    <div id="div1">
+        ini adalah kucing
+    </div>
+    <div id="div2">
+        ini adalah kambing
+    </div>
+    <div id="div3">
+        ini adalah sapi
+    </div>
+
+    <audio id="catSound" src="sound/cat.mp3"></audio>
+    <audio id="goatSound" src="sound/goat.mp3"></audio>
+    <audio id="cowSound" src="sound/cow.mp3"></audio>
+
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var currentSound;
+
+            $("#div1").mouseover(function() {
+                $(this).css({
+                    background: "url('https://2.bp.blogspot.com/-6zrM4tHh6RI/W7FbIDpwq2I/AAAAAAAAI3A/9vmRuW93At4tlrN9ClJkrKaiWi19utwTgCLcBGAs/s1600/gambar%2Bkucing%2Bcomel.jpg')"
+                });
+                if (currentSound) currentSound.pause();
+                currentSound = $("#catSound")[0];
+                currentSound.play();
+            });
+
+            $("#div2").mouseover(function() {
+                $(this).css({
+                    background: "url('https://cdn.pixabay.com/photo/2021/07/05/11/20/sheeps-6388887_1280.jpg')"
+                });
+                if (currentSound) currentSound.pause();
+                currentSound = $("#goatSound")[0];
+                currentSound.play();
+            });
+
+            $("#div3").mouseover(function() {
+                $(this).css({
+                    background: "url('https://1.bp.blogspot.com/-a_K9DIhVS1w/UzocTF_QnUI/AAAAAAAAAQA/mfiZvzkO9BQ/s1600/sapi+charbray++-+foto+gambar+sapi+lengkap+-+usahaternak.jpg')"
+                });
+                if (currentSound) currentSound.pause();
+                currentSound = $("#cowSound")[0];
+                currentSound.play();
+            });
+
+            $("div").mouseout(function() {
+                $(this).css({
+                    background: "lightblue"
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

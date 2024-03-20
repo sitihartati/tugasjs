@@ -1,0 +1,20 @@
+body {
+    text-align: center;
+    margin: auto;
+    background-color: aliceblue;
+}
+
+#div1,
+#div2,
+#div3 {
+    display: inline-block;
+    margin: auto;
+    width: 70%;
+    color: black;
+    border: 3px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    background: lightblue;
+    height: 300px;
+    cursor: pointer;
+}
